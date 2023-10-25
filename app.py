@@ -7,6 +7,10 @@ sock = Sock(app)
 
 sockets = {}
 
+@app.route('/test')
+def test():
+    return render_template('index.html')
+
 @sock.route('/')
 def echo(sock):
     while True:

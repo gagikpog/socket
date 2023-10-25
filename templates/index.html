@@ -14,7 +14,9 @@
             document.getElementById('log').innerHTML += `<span style="color: ${color}">${text}</span><br>`;
         };
 
-        const socket = new WebSocket('ws://localhost:5000/');
+        const socketPath = localStorage.getItem('socketPath') || 'ws://localhost:5000/'
+
+        const socket = new WebSocket(socketPath);
         socket.addEventListener('message', (ev) => {
             const data = JSON.parse(ev.data);
             log('<<< ' + data.value, 'blue');
